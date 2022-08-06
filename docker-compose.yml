@@ -1,0 +1,184 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=zyuser
+      - RABBITMQ_DEFAULT_PASS=zypassword
+
+  rebus-perftest-subscriber1:
+    image: rebus-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=1
+
+  rebus-perftest-subscriber2:
+    image: rebus-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=2
+
+  rebus-perftest-subscriber3:
+    image: rebus-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=3
+
+  rebus-perftest-subscriber4:
+    image: rebus-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=4
+
+  rebus-perftest-subscriber5:
+    image: rebus-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=5
+
+  rebus-perftest-subscriber6:
+    image: rebus-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=6
+
+  rebus-perftest-subscriber7:
+    image: rebus-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=7
+
+  rebus-perftest-subscriber8:
+    image: rebus-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=8
+
+  rebus-perftest-subscriber9:
+    image: rebus-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=9
+
+  rebus-perftest-subscriber10:
+    image: rebus-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=10
+
+
+#######################################################################
+
+  rebus-perftest-publisher1:
+    image: rebus-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=1
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rebus-perftest-subscriber1
+
+  rebus-perftest-publisher2:
+    image: rebus-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=2
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rebus-perftest-subscriber2
+
+  rebus-perftest-publisher3:
+    image: rebus-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=3
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rebus-perftest-subscriber3
+
+  rebus-perftest-publisher4:
+    image: rebus-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=4
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rebus-perftest-subscriber4
+
+  rebus-perftest-publisher5:
+    image: rebus-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=5
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rebus-perftest-subscriber5
+
+  rebus-perftest-publisher6:
+    image: rebus-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=6
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rebus-perftest-subscriber6
+
+  rebus-perftest-publisher7:
+    image: rebus-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=7
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rebus-perftest-subscriber7
+
+  rebus-perftest-publisher8:
+    image: rebus-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=8
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rebus-perftest-subscriber8
+
+  rebus-perftest-publisher9:
+    image: rebus-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=9
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rebus-perftest-subscriber9
+
+  rebus-perftest-publisher10:
+    image: rebus-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=10
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rebus-perftest-subscriber10
