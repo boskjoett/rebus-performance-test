@@ -52,6 +52,7 @@ namespace RebusPerformanceTest.Subscriber
             // Rebus defaults are 1 worker thread and a max parallelism of 5.
             int numberOfWorkers = 1;
             int maxParallelism = 5;
+            bool publisherConfirms = false;
 
             switch (instance)
             {
@@ -65,9 +66,10 @@ namespace RebusPerformanceTest.Subscriber
                                 o.SetMaxParallelism(maxParallelism);
                             })
                             .Logging(l => l.Console(LogLevel.Warn))
-                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName))
+                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName)
+                                            .SetPublisherConfirms(publisherConfirms))
                             .Routing(r => r.TypeBased()
-                                .Map<RequestMessage1>(_inputQueueName))
+                                .Map<ResponseMessage1>("Publisher1"))
                             .Start();
 
                         _bus.Subscribe<RequestMessage1>().Wait();
@@ -84,9 +86,10 @@ namespace RebusPerformanceTest.Subscriber
                                 o.SetMaxParallelism(maxParallelism);
                             })
                             .Logging(l => l.Console(LogLevel.Warn))
-                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName))
+                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName)
+                                            .SetPublisherConfirms(publisherConfirms))
                             .Routing(r => r.TypeBased()
-                                .Map<RequestMessage2>(_inputQueueName))
+                                .Map<ResponseMessage2>("Publisher2"))
                             .Start();
 
                         _bus.Subscribe<RequestMessage2>().Wait();
@@ -103,9 +106,10 @@ namespace RebusPerformanceTest.Subscriber
                                 o.SetMaxParallelism(maxParallelism);
                             })
                             .Logging(l => l.Console(LogLevel.Warn))
-                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName))
+                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName)
+                                            .SetPublisherConfirms(publisherConfirms))
                             .Routing(r => r.TypeBased()
-                                .Map<RequestMessage3>(_inputQueueName))
+                                .Map<ResponseMessage3>("Publisher3"))
                             .Start();
 
                         _bus.Subscribe<RequestMessage3>().Wait();
@@ -122,9 +126,10 @@ namespace RebusPerformanceTest.Subscriber
                                 o.SetMaxParallelism(maxParallelism);
                             })
                             .Logging(l => l.Console(LogLevel.Warn))
-                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName))
+                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName)
+                                            .SetPublisherConfirms(publisherConfirms))
                             .Routing(r => r.TypeBased()
-                                .Map<RequestMessage4>(_inputQueueName))
+                                .Map<ResponseMessage4>("Publisher4"))
                             .Start();
 
                         _bus.Subscribe<RequestMessage4>().Wait();
@@ -141,9 +146,10 @@ namespace RebusPerformanceTest.Subscriber
                                 o.SetMaxParallelism(maxParallelism);
                             })
                             .Logging(l => l.Console(LogLevel.Warn))
-                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName))
+                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName)
+                                            .SetPublisherConfirms(publisherConfirms))
                             .Routing(r => r.TypeBased()
-                                .Map<RequestMessage5>(_inputQueueName))
+                                .Map<ResponseMessage5>("Publisher5"))
                             .Start();
 
                         _bus.Subscribe<RequestMessage5>().Wait();
@@ -160,9 +166,10 @@ namespace RebusPerformanceTest.Subscriber
                                 o.SetMaxParallelism(maxParallelism);
                             })
                             .Logging(l => l.Console(LogLevel.Warn))
-                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName))
+                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName)
+                                            .SetPublisherConfirms(publisherConfirms))
                             .Routing(r => r.TypeBased()
-                                .Map<RequestMessage6>(_inputQueueName))
+                                .Map<ResponseMessage6>("Publisher6"))
                             .Start();
 
                         _bus.Subscribe<RequestMessage6>().Wait();
@@ -179,9 +186,10 @@ namespace RebusPerformanceTest.Subscriber
                                 o.SetMaxParallelism(maxParallelism);
                             })
                             .Logging(l => l.Console(LogLevel.Warn))
-                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName))
+                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName)
+                                            .SetPublisherConfirms(publisherConfirms))
                             .Routing(r => r.TypeBased()
-                                .Map<RequestMessage7>(_inputQueueName))
+                                .Map<ResponseMessage7>("Publisher7"))
                             .Start();
 
                         _bus.Subscribe<RequestMessage7>().Wait();
@@ -198,9 +206,10 @@ namespace RebusPerformanceTest.Subscriber
                                 o.SetMaxParallelism(maxParallelism);
                             })
                             .Logging(l => l.Console(LogLevel.Warn))
-                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName))
+                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName)
+                                            .SetPublisherConfirms(publisherConfirms))
                             .Routing(r => r.TypeBased()
-                                .Map<RequestMessage8>(_inputQueueName))
+                                .Map<ResponseMessage8>("Publisher8"))
                             .Start();
 
                         _bus.Subscribe<RequestMessage8>().Wait();
@@ -217,9 +226,10 @@ namespace RebusPerformanceTest.Subscriber
                                 o.SetMaxParallelism(maxParallelism);
                             })
                             .Logging(l => l.Console(LogLevel.Warn))
-                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName))
+                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName)
+                                            .SetPublisherConfirms(publisherConfirms))
                             .Routing(r => r.TypeBased()
-                                .Map<RequestMessage9>(_inputQueueName))
+                                .Map<ResponseMessage9>("Publisher9"))
                             .Start();
 
                         _bus.Subscribe<RequestMessage9>().Wait();
@@ -236,9 +246,10 @@ namespace RebusPerformanceTest.Subscriber
                                 o.SetMaxParallelism(maxParallelism);
                             })
                             .Logging(l => l.Console(LogLevel.Warn))
-                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName))
+                            .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, _inputQueueName)
+                                            .SetPublisherConfirms(publisherConfirms))
                             .Routing(r => r.TypeBased()
-                                .Map<RequestMessage10>(_inputQueueName))
+                                .Map<ResponseMessage10>("Publisher10"))
                             .Start();
 
                         _bus.Subscribe<RequestMessage10>().Wait();
